@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    hikari:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:testdb
+      username: sa
+      password:
+  jpa:
+    database-platform: H2
+    show-sql: false
+    hibernate:
+      ddl-auto: create-drop
