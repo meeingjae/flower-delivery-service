@@ -37,8 +37,15 @@ dependencies {
 
     implementation("com.querydsl:querydsl-jpa:$queryDslVersion")
     kapt("com.querydsl:querydsl-apt:$queryDslVersion:jpa")
+
+    testImplementation(kotlin("test"))
+
 }
 
 sourceSets["main"].withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class) {
     kotlin.srcDir("$buildDir/generated/source/kaptDsl/main")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
