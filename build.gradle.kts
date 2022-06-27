@@ -38,6 +38,8 @@ dependencies {
     implementation("com.querydsl:querydsl-jpa:$queryDslVersion")
     kapt("com.querydsl:querydsl-apt:$queryDslVersion:jpa")
 
+    runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:1.7.0")
+
     testImplementation(kotlin("test"))
 
 }
