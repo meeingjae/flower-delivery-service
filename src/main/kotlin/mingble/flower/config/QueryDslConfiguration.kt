@@ -1,6 +1,8 @@
 package mingble.flower.config
 
 import com.querydsl.jpa.impl.JPAQueryFactory
+import mingble.flower.repository.FlowerRepositoryCustom
+import mingble.flower.repository.FlowerRepositoryCustomImpl
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import javax.persistence.EntityManager
@@ -14,5 +16,10 @@ class QueryDslConfiguration(
     @Bean
     fun jpaQueryFactory(): JPAQueryFactory {
         return JPAQueryFactory(entityManager)
+    }
+
+    @Bean
+    fun flowerRepositoryCustom(): FlowerRepositoryCustom {
+        return FlowerRepositoryCustomImpl(jpaQueryFactory())
     }
 }
