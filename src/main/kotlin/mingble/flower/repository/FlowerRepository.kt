@@ -1,4 +1,9 @@
 package mingble.flower.repository
 
-interface FlowerRepository {
+import mingble.flower.entity.Flower
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
+
+@Repository
+interface FlowerRepository : JpaRepository<Flower, Long> {
 }

@@ -7,6 +7,7 @@ import javax.persistence.*
 class Flower(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     val id: Long,
     @Column
     val name: String,
