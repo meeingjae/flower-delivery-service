@@ -38,6 +38,12 @@ dependencies {
     implementation("com.querydsl:querydsl-jpa:$queryDslVersion")
     kapt("com.querydsl:querydsl-apt:$queryDslVersion:jpa")
 
+    implementation("com.linecorp.kotlin-jdsl:spring-data-kotlin-jdsl-starter:2.0.3.RELEASE") {
+        exclude(group = "com.linecorp.kotlin-jdsl", module = "hibernate-kotlin-jdsl")
+    }
+    implementation("com.linecorp.kotlin-jdsl:hibernate-kotlin-jdsl:2.0.3.RELEASE") //jdsl
+    implementation("org.hibernate:hibernate-core:2.0.3.RELEASE")
+
     runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:1.7.0")
 
     testImplementation(kotlin("test"))
