@@ -4,3 +4,7 @@ accept: application/json
 ###
 GET localhost:8080/flower/dsl
 accept: application/json
+
+###
+GET localhost:8080/flower/jdsl
+accept: application/json
