@@ -11,17 +11,17 @@ import javax.sql.DataSource
 
 @Configuration
 @Profile("dev")
-open class H2ServerConfig {
+class H2ServerConfig {
 
     @Bean
     @ConfigurationProperties("spring.datasource.hikari")
-    open fun dataSource(): DataSource {
+    fun dataSource(): DataSource {
         Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092").start()
         return HikariDataSource()
     }
 
     @Bean
-    open fun entityManager(entityManager: EntityManager): EntityManager {
+    fun entityManager(entityManager: EntityManager): EntityManager {
         return entityManager
     }
 }
