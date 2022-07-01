@@ -11,7 +11,6 @@ import javax.transaction.Transactional
 @Service
 @Transactional
 open class FlowerService(
-    private val entityManager: EntityManager,
     private val queryFactory: SpringDataQueryFactory
 ) {
 
