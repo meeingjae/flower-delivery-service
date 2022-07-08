@@ -30,8 +30,11 @@ class FlowerController(
 
     @GetMapping("/jdsl")
     fun getAllByJdsl(
-        @RequestParam(value = "name", required = false, defaultValue = "first") name : String
-    ): ResponseEntity<List<Flower>> {
+        @RequestParam(required = false, defaultValue = "") name: String,
+        @RequestParam(required = false, defaultValue = "") ids : List<Long>): ResponseEntity<List<Flower>> {
+        if (ids.isNotEmpty()) {
+            return ResponseEntity.ok(flowerService.getByFlowerIds(ids))
+        }
         return ResponseEntity.ok(flowerService.getAll(name))
     }
 }

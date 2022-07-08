@@ -8,3 +8,7 @@ accept: application/json
 ###
 GET localhost:8080/flower/jdsl
 accept: application/json
+
+###
+GET localhost:8080/flower/jdsl?ids=1,3
+accept: application/json
