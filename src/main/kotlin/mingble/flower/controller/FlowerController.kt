@@ -5,12 +5,13 @@ import mingble.flower.repository.FlowerRepository
 import mingble.flower.repository.FlowerRepositoryCustom
 import mingble.flower.service.FlowerService
 import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import java.util.concurrent.Flow
 
 @RestController
 @RequestMapping("/flower")
-class FlowerController(
+open class FlowerController(
     private val flowerRepository: FlowerRepository,
     private val flowerRepositoryCustom: FlowerRepositoryCustom,
     private val flowerService: FlowerService
@@ -38,8 +39,12 @@ class FlowerController(
     }
 
     @PutMapping("/jdsl")
-    fun updateFlower(@RequestBody flower: Flower): ResponseEntity<Flower> {
-        return ResponseEntity.ok(null)
+    open fun updateFlower(@RequestBody flower: Flower): ResponseEntity<Int> {
+        if (flowerService.updateFlower(flower) == 1) {
+            return ResponseEntity.ok().build()
+        } else {
+            return ResponseEntity.internalServerError().build()
+        }
     }
 
     @DeleteMapping("/jdsl")
