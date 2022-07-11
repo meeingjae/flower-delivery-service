@@ -5,10 +5,8 @@ import mingble.flower.repository.FlowerRepository
 import mingble.flower.repository.FlowerRepositoryCustom
 import mingble.flower.service.FlowerService
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import java.util.concurrent.Flow
 
 @RestController
 @RequestMapping("/flower")
@@ -31,10 +29,21 @@ class FlowerController(
     @GetMapping("/jdsl")
     fun getAllByJdsl(
         @RequestParam(required = false, defaultValue = "") name: String,
-        @RequestParam(required = false, defaultValue = "") ids : List<Long>): ResponseEntity<List<Flower>> {
+        @RequestParam(required = false, defaultValue = "") ids: List<Long>
+    ): ResponseEntity<List<Flower>> {
         if (ids.isNotEmpty()) {
             return ResponseEntity.ok(flowerService.getByFlowerIds(ids))
         }
         return ResponseEntity.ok(flowerService.getAll(name))
+    }
+
+    @PutMapping("/jdsl")
+    fun updateFlower(@RequestBody flower: Flower): ResponseEntity<Flower> {
+        return ResponseEntity.ok(null)
+    }
+
+    @DeleteMapping("/jdsl")
+    fun deleteFlower(@RequestParam id: Long) : ResponseEntity<Flow> {
+        return ResponseEntity.ok(null)
     }
 }
