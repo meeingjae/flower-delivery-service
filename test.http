@@ -23,3 +23,6 @@ content-type: application/json
   "price": 999999,
   "message" : "changed message"
 }
+
+###
+DELETE localhost:8080/flower/jdsl?id=1
