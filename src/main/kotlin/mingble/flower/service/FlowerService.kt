@@ -31,12 +31,18 @@ open class FlowerService(
         }
     }
 
-    open fun updateFlower(flower: Flower) : Int {
+    open fun updateFlower(flower: Flower): Int {
         return queryFactory.updateQuery(Flower::class) {
             where(col(Flower::id).equal(flower.id))
             set(col(Flower::name), flower.name)
             set(col(Flower::message), flower.message)
             set(col(Flower::price), flower.price)
+        }.executeUpdate()
+    }
+
+    open fun deleteFlower(id: Long): Int {
+        return queryFactory.deleteQuery(Flower::class) {
+            where(col(Flower::id).equal(id))
         }.executeUpdate()
     }
 }

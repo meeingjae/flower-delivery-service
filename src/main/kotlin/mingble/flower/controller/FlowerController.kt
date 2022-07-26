@@ -48,7 +48,11 @@ open class FlowerController(
     }
 
     @DeleteMapping("/jdsl")
-    fun deleteFlower(@RequestParam id: Long) : ResponseEntity<Flow> {
-        return ResponseEntity.ok(null)
+    open fun deleteFlower(@RequestParam id: Long) : ResponseEntity<Flow> {
+        if (flowerService.deleteFlower(id) == 1) {
+            return ResponseEntity.ok().build()
+        } else {
+            return ResponseEntity.internalServerError().build()
+        }
     }
 }
